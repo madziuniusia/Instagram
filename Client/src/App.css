@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.item {
+    color: grey;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.url {
+    margin: 10px;
+    color: blue;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.myApp {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}

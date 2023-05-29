@@ -1,0 +1,81 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #1D1F20;
+    user-select: none;
+}
+
+form {
+    padding: 10px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#submit {
+    background-color: white;
+    color: #1D1F20;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    pointer-events: visibleFill;
+}
+
+#submit:hover {
+    background-color: #6fba82;
+    transition-duration: 300ms;
+    transition-property: background-color;
+    transition-timing-function: ease-in-out;
+}
+
+#SignUp {
+    color: aliceblue;
+    text-decoration: none;
+    pointer-events: visibleFill;
+}
+
+
+/* Rainbow border */
+.gradient-border {
+    --borderWidth: 10px;
+    background: #1D1F20;
+    color: white;
+    position: relative;
+    border-radius: var(--borderWidth);
+    margin: 10px;
+}
+
+.gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
