@@ -1,25 +1,25 @@
 ###potwierzdenie usera
-GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWUyQGVtYWlsLnBsIiwiaWF0IjoxNjg0ODIyNTQzLCJleHAiOjE2ODQ4MjQzNDN9.S5LpfvjkFimLttjmyq1GAwGhT2q2gjRIvWS99ohNuig HTTP/1.1
+GET http://localhost:5000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWUyQGVtYWlsLnBsIiwiaWF0IjoxNjg0ODIyNTQzLCJleHAiOjE2ODQ4MjQzNDN9.S5LpfvjkFimLttjmyq1GAwGhT2q2gjRIvWS99ohNuig HTTP/1.1
 
 
 ###get wszystkich userów
-GET http://localhost:3000/api/user HTTP/1.1
+GET http://localhost:5000/api/user HTTP/1.1
 
 ###rejestracja
-POST http://localhost:3000/api/user/register HTTP/1.1
+POST http://localhost:5000/api/user/register HTTP/1.1
 content-type: application/json
 
 {
     "name": "name",
     "lastName": "lastName",
-    "email":"name2@email.pl",
+    "email":"name@email.pl",
     "password":"password"
 }
 
 ###logowanie
-POST http://localhost:3000/api/user/login HTTP/1.1
+POST http://localhost:5000/api/user/login HTTP/1.1
 
 { 
-    "email":"name2@email.pl",
+    "email":"name@email.pl",
     "password":"password"
 }

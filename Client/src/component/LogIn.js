@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const LogIn = () => {
-  let data = [];
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  /*   const [Token, setToken] = useState(data);
-   */
+  const [message, setMessage] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     async function fetchPosts() {
-      const response = await fetch("http://localhost:3000/api/user/login", {
+      const response = await fetch("http://localhost:5000/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,8 +16,13 @@ const LogIn = () => {
         body: JSON.stringify({ email: Email, password: Password }),
       });
       const data = await response.json();
-      /*       setToken(data);
-       */ localStorage.setItem("token", data);
+      if (data.message === "correct") {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("login", data.login);
+        window.location.reload();
+      } else {
+        setMessage(data.message);
+      }
     }
     fetchPosts();
   };
@@ -30,6 +34,7 @@ const LogIn = () => {
         <input id="Password" type="password" name="Password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         <input id="submit" type="submit" value="Sign Up" />
       </form>
+      {message}
     </div>
   );
 };

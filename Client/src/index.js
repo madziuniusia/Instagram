@@ -1,10 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./Main";
+import Main from "./Main";
+import LoginMain from "./LoginMain";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    {/* {token ? <App /> : <></>} */} <App />
-  </React.StrictMode>
-);
+root.render(<React.StrictMode>{localStorage.getItem("token") ? <Main /> : <LoginMain />}</React.StrictMode>);

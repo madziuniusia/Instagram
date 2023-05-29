@@ -10,7 +10,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     async function fetchPosts() {
-      const response = await fetch("http://localhost:3000/api/user/register", {
+      const response = await fetch("http://localhost:5000/api/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const SignUp = () => {
         <input id="Password" type="password" name="Password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         <input id="submit" type="submit" value="Sign Up" />
       </form>
-      <div style={{ color: "white", width: "100px", userSelect: "text" }}>{Token}</div>
+      <div style={{ color: "white", width: "400px", userSelect: "text", overflowWrap: "break-word" }}>{Token}</div>
     </div>
   );
 };

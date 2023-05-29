@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Upload = () => {
   const [files, setFiles] = useState();
@@ -9,16 +9,14 @@ const Upload = () => {
     for (let i = 0; i < files.length; i++) {
       formData.append("file", files[i]);
     }
-    formData.append("album", "album3");
-    /*  for (var p of formData) {
-      console.log(p);
-    } */
+    formData.append("album", localStorage.getItem("login"));
     async function fetchPosts() {
-      const response = await fetch("http://localhost:3000/api/photos", {
+      const response = await fetch("http://localhost:5000/api/photos", {
         method: "POST",
         body: formData,
       });
-      const data = await response.json();
+      await response.json();
+      window.location.reload();
     }
     fetchPosts();
   };

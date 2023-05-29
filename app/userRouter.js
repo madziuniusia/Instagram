@@ -11,7 +11,7 @@ const router = async (req, res) => {
         const data = await userController.confirm(verifyToken);
         EndResult(res, data);
       } else if (req.url === "/api/user") {
-        const data = await userController.getAll();
+        const data = userController.getAll();
         EndResult(res, data);
       }
       break;
@@ -24,14 +24,8 @@ const router = async (req, res) => {
         EndResult(res, data);
       } else if (req.url == "/api/user/login") {
         const requestData = JSON.parse(await getRequestData(req));
-        const encryptPass = await userController.login(requestData.email);
-        const decryptPass = await bcryptController.decryptPass(requestData.password, encryptPass);
-        if (decryptPass) {
-          const token = await bcryptController.createToken({ email: requestData.email, name: requestData.name, lastname: requestData.lastname });
-          EndResult(res, "Authorization" + " Bearer " + token);
-        } else {
-          EndResult(res, "Błędne hasło");
-        }
+        const response = await userController.login(requestData);
+        EndResult(res, response);
       }
       break;
   }

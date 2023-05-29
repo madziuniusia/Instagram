@@ -1,4 +1,5 @@
 const { User } = require("./model");
+const bcryptController = require("./bcrypt");
 
 let Users = [];
 
@@ -10,7 +11,7 @@ module.exports = {
         if (FindEmail == undefined) {
           const NewUser = new User(data.name, data.lastName, data.email, password);
           Users.push(NewUser);
-          resolve("Potwierdź swoje konto tym linkiem  " + "http://localhost:3000/api/user/confirm/" + token);
+          resolve("Potwierdź swoje konto tym linkiem  " + "http://localhost:5000/api/user/confirm/" + token);
         } else resolve("User o takim mailu już istnieje");
       } catch (error) {
         reject(error);
@@ -34,19 +35,23 @@ module.exports = {
       }
     });
   },
-  login: async (email) => {
-    return new Promise((resolve, reject) => {
-      try {
-        const User = Users.find((user) => user.email == email);
-        if (User == undefined) resolve("Taki user nie istnieje");
-        else {
-          if (User.confirmed) resolve(User.password);
-          else resolve("Niepotwierdzone konto");
+  login: async (requestData) => {
+    const User = Users.find((user) => user.email == requestData.email);
+    if (User == undefined) return { message: "Taki user nie istnieje" };
+    else {
+      if (User.confirmed) {
+        const encryptPass = User.password;
+        const decryptPass = await bcryptController.decryptPass(requestData.password, encryptPass);
+        if (decryptPass) {
+          const token = await bcryptController.createToken({ email: requestData.email, name: requestData.name, lastname: requestData.lastname });
+          return { token: token, message: "correct", login: requestData.email };
+        } else {
+          return { message: "błędne hasło" };
         }
-      } catch (error) {
-        reject(error);
+      } else {
+        return { message: "niepotwierdzone konto" };
       }
-    });
+    }
   },
   getAll: () => Users,
   getOne: (id) => Users.find((user) => user.id == id),
