@@ -10,12 +10,11 @@ const router = async (req, res) => {
         EndResult(res, data);
       } else if (req.url.match(/\/api\/photos\/([0-9]+)/)) {
         let arrayUrl = req.url.split("/");
-        //const data = jsonController.get(arrayUrl[arrayUrl.length - 1]);
         jsonController.returFile(arrayUrl[arrayUrl.length - 1], res);
-        /* EndResult(res, data); */
-      } else if (req.url.match(/\/api\/photos\/\/tags\/([0-9]+)/)) {
+      } else if (req.url.match(/\/api\/photos\/tags\/([0-9]+)/)) {
         let arrayUrl = req.url.split("/");
         const data = jsonController.get(arrayUrl[arrayUrl.length - 1])?.tags ?? [];
+        console.log(data);
         EndResult(res, data);
       }
       break;
@@ -37,19 +36,15 @@ const router = async (req, res) => {
       if (req.url == "/api/photos") {
         const data = await getRequestData(req);
         const endData = await jsonController.update(JSON.parse(data));
-        EndResult(res, data);
+        EndResult(res, endData);
       } else if (req.url == "/api/photos/tags") {
         const data = JSON.parse(await getRequestData(req));
         const result = jsonController.addTag(data);
-        if (result) {
-          res.end();
-        } else {
-          res.writeHead(404, { msg: "tag już istnieje" });
-        }
+        EndResult(res, result);
       } else if (req.url == "/api/photos/tags/mass") {
         const data = JSON.parse(await getRequestData(req));
-        jsonController.addManyTags(data);
-        res.end();
+        const addTags = jsonController.addManyTags(data);
+        EndResult(res, addTags);
       }
       break;
     default:

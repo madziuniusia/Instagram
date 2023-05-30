@@ -32,7 +32,7 @@ module.exports = {
   get: (id) => photos.find((x) => x.id == id),
   addTag: (request) => {
     const photo = photos.find((x) => x.id == request.id);
-    if (photo.tags.some((x) => x.name == request.name)) {
+    if (photo.tags.some((x) => x.name == request.tag.name)) {
       return false;
     }
     photo.tags.push(request.tag);

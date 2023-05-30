@@ -10,7 +10,7 @@ GET http://localhost:5000/api/tags HTTP/1.1
 GET http://localhost:5000/api/photos/tags/1 HTTP/1.1
 
 ### GET - pobranie jednego taga
-GET http://localhost:3000/api/tags/1 HTTP/1.1
+GET http://localhost:5000/api/tags/1 HTTP/1.1
 
 
 ### POST - utworzenie nowego taga
@@ -30,7 +30,7 @@ content-type: application/json
 {
     "id": 1,
     "tag": {
-        "name":"#nowytag",
+        "name":"#nowytag2",
         "popularity": 1000000
     }
 }

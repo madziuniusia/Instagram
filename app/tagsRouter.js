@@ -6,23 +6,21 @@ const router = async (req, res) => {
     case "GET":
       if (req.url == "/api/tags/raw") {
         const data = tagsController.getRaw();
-        EndResult(res, data)
-      }
-      else if (req.url === "/api/tags") {
+        EndResult(res, data);
+      } else if (req.url === "/api/tags") {
         const data = tagsController.getAll();
-        EndResult(res, data)
-      }
-      else if (req.url.match(/\/api\/tags\/([0-9]+)/)) {
+        EndResult(res, data);
+      } else if (req.url.match(/\/api\/tags\/([0-9]+)/)) {
         let arrayUrl = req.url.split("/");
         const data = tagsController.getById(arrayUrl[arrayUrl.length - 1]);
-        EndResult(res, data)
+        EndResult(res, data);
       }
       break;
     case "POST":
       if (req.url == "/api/tags") {
         const requestData = JSON.parse(await getRequestData(req));
         const data = tagsController.newTag(requestData);
-        EndResult(res, data)
+        EndResult(res, data);
       }
       break;
   }
