@@ -31,7 +31,7 @@ const Photo = (props) => {
   }, []);
   const addTag = (e) => {
     const textTag = "#" + prompt("Tag's name: ", "newTag");
-    if (textTag && textTag != null && textTag != "") fetchPatch();
+    if (textTag && textTag !== null && textTag !== "") fetchPatch();
 
     async function fetchPatch() {
       const response = await fetch("http://localhost:5000/api/photos/tags", {
@@ -59,7 +59,6 @@ const Photo = (props) => {
     <div className="center">
       <div id="tagi">
         {tags.map((x, i) => {
-          console.log(x);
           return (
             <p style={{ position: "absolute", top: x.YPos + "px", left: x.XPos + "px" }} key={i}>
               {x.name}
