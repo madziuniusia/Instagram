@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./component/Home";
 /* import Profile from "./component/Profile";  */
-
 const App = () => {
   useEffect(() => {
     if (!localStorage.getItem("token")) window.location.reload();
