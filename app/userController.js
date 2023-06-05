@@ -53,6 +53,23 @@ module.exports = {
       }
     }
   },
+  AvatarFile: (res, data) => {
+    const file = Users.find((x) => {
+      return x.email == data.email;
+    });
+    if (file) {
+      const filePath = file.url;
+      const stat = fs.statSync(filePath);
+
+      response.writeHead(200, {
+        "Content-Type": "image/" + "jpg",
+        "Content-Length": stat.size,
+      });
+      fs.readFile(filePath, function (err, content) {
+        res.end(content);
+      });
+    }
+  },
   getAll: () => Users,
   getOne: (id) => Users.find((user) => user.id == id),
   update: (id, data) => {

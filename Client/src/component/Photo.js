@@ -44,8 +44,8 @@ const Photo = (props) => {
           tag: {
             name: textTag,
             popularity: 0,
-            XPos: e.clientX,
-            YPos: e.clientY,
+            XPos: e.pageX,
+            YPos: e.pageY,
           },
         }),
       });
@@ -56,18 +56,22 @@ const Photo = (props) => {
     }
   };
   return (
-    <div className="center">
+    <>
       <div id="tagi">
         {tags.map((x, i) => {
           return (
-            <p style={{ position: "absolute", top: x.YPos + "px", left: x.XPos + "px" }} key={i}>
+            <p className="tag" style={{ position: "absolute", top: x.YPos + "px", left: x.XPos + "px" }} key={i}>
               {x.name}
             </p>
           );
         })}
       </div>
-      <img height="500px" id={photo.id} key={photo.id} src={"http://localhost:5000/api/photos/" + photo.id} alt="HI DS" onClick={addTag} />
-    </div>
+      <div className="center photo-tag">
+        <div id="photoSelcted">
+          <img height="500px" id={photo.id} key={photo.id} src={"http://localhost:5000/api/photos/" + photo.id} alt="HI DS" onClick={addTag} />
+        </div>
+      </div>
+    </>
   );
 };
 

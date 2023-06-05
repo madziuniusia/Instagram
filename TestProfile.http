@@ -1,0 +1,22 @@
+###get danych dot. usera poprzez token
+GET http://localhost:5000/api/profile HTTP/1.1
+
+
+###rejestracja
+PATCH  http://localhost:5000/api/profile HTTP/1.1
+content-type: application/json
+
+{
+    "name": "name",
+    "lastName": "lastName",
+    "email":"name@email.pl",
+    "password":"password"
+}
+
+###logowanie
+POST http://localhost:5000/api/user/login HTTP/1.1
+
+{ 
+    "email":"name@email.pl",
+    "password":"password"
+}

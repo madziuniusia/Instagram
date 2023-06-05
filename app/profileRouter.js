@@ -7,12 +7,8 @@ const router = async (req, res) => {
   switch (req.method) {
     case "GET":
       if (req.url == "/api/profile") {
-        const data = await bcryptController.verifyToken();
-        // pobranie danych usera, na podtawie tokena?
+        const data = await bcryptController.verifyToken(token);
         EndResult(res, data);
-      } else if (req.url == "/api/profile/logout ") {
-        //usuniecie tokena
-        EndResult(res, "LOG OUT");
       }
       break;
     case "POST":
@@ -24,7 +20,8 @@ const router = async (req, res) => {
     case "PATCH":
       if (req.url == "/api/profile") {
         //zmiena imienia i nazwiska w danych z tokenem
-        const data = await utils(req);
+        const token = await utils(req);
+        const data = await bcryptController.verifyToken(token);
         const endData = await jsonController.update(JSON.parse(data));
         res.end(JSON.stringify(endData, null, 5));
       }

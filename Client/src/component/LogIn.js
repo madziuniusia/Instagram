@@ -28,13 +28,23 @@ const LogIn = () => {
   };
 
   return (
-    <div className="center">
-      <form id="FormLogIn" className="gradient-border" onSubmit={handleSubmit}>
-        <input id="email" type="email" name="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
-        <input id="Password" type="password" name="Password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-        <input id="submit" type="submit" value="Sign Up" />
-      </form>
-      {message}
+    <div className="all">
+      <div className="left-part">
+        <h1 className="signup-logo">Log In</h1>
+      </div>
+      <div className="right-part">
+        <div className="center">
+          <form id="FormLogIn" className="gradient-border" onSubmit={handleSubmit}>
+            <span className="logo">LogIn</span>
+            <span className="title">E-mail</span>
+            <input required id="email" type="email" name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+            <span className="title">Password</span>
+            <input required id="Password" type="password" name="Password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+            <input id="submit" type="submit" value="Log In" />
+          </form>
+          <div id="message">{message}</div>
+        </div>
+      </div>
     </div>
   );
 };

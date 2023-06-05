@@ -26,6 +26,11 @@ const router = async (req, res) => {
         const requestData = JSON.parse(await getRequestData(req));
         const response = await userController.login(requestData);
         EndResult(res, response);
+      } else if (req.url == "/api/user/avatar") {
+        const requestData = JSON.parse(await getRequestData(req));
+        const token = await bcryptController.verifyToken(requestData.token);
+        const response = userController.AvatarFile(res, token);
+        EndResult(res, response);
       }
       break;
   }

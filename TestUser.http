@@ -23,3 +23,9 @@ POST http://localhost:5000/api/user/login HTTP/1.1
     "email":"name@email.pl",
     "password":"password"
 }
+###getAvatar
+POST http://localhost:5000/api/user/avatar HTTP/1.1
+
+{ 
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODU1MTM4NTcsImV4cCI6MTY4NTUxNTY1N30.TIdEFCPOUDT_wWokHTvkRZ4TGkt4lT9Wbu-Xwi8KFsQ",
+}

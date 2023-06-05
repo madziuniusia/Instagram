@@ -32,10 +32,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="center">
+    <div className="mainn">
+    <div className="center home-main">
+      <button onClick={Back} className="btn">Powrót do strony gównej</button>
       <Upload />
-      <button onClick={Back}>Powrót do strony gównej</button>
       {clicked ? <Photo photo={photo} /> : <Photos photosdata={photosdata} funPhoto={DisplayPhoto} />}
+    </div>
     </div>
   );
 };

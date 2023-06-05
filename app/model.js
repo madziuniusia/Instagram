@@ -28,7 +28,7 @@ class User {
     this.email = email;
     this.confirmed = false;
     this.password = password;
-    this.url = "../input.jpg";
+    this.url = "uploads\\avatar\\default.jpg";
   }
 }
 module.exports = { Photo, Tag, User };

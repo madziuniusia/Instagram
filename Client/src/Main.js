@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./component/Home";
-/* import Profile from "./component/Profile";  */
 const App = () => {
   useEffect(() => {
     if (!localStorage.getItem("token")) window.location.reload();
@@ -10,6 +9,9 @@ const App = () => {
 
   return (
     <>
+      <div className='header-log'>
+      <div className="myApp">
+        <span>Instagram</span>
       <button
         id="LogOut"
         onClick={() => {
@@ -19,17 +21,20 @@ const App = () => {
       >
         LogOut
       </button>
+      </div>
+
+      </div>
       <Router>
-        <Link className="url" to="/">
+
+        <div className="navv">
+
+      <Link className="url" to="/">
           Home
         </Link>
 
-        {/* <Link className="url" to="/Profile">
-          Profile
-        </Link>  */}
+        </div>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/Profile" element={<Profile />} /> */}
         </Routes>
       </Router>
     </>
